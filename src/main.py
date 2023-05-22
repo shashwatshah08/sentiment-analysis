@@ -1,6 +1,7 @@
 import pandas as pd
 
 from preprocess_data import preprocess_data
+from src.feature_extraction import feature_extraction
 
 if "__main__" == __name__:
     print("loading data...")
@@ -11,4 +12,8 @@ if "__main__" == __name__:
     print("preprocessing data...")
     df = preprocess_data(df)
     print("data preprocessed")
+    print("creating feature matrix...")
+    matrix = feature_extraction(df)
+    print("feature matrix created")
     print(df.head())
+    print(matrix)
