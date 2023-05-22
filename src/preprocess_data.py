@@ -2,14 +2,9 @@ import re
 
 
 def preprocess_data(df):
-    df = remove_unwanted_columns(df)
-    df["text"] = df["text"].apply(preprocess_text)
-    return df
-
-
-def remove_unwanted_columns(df):
     df.columns = ["target", "ids", "date", "flag", "user", "text"]
     df = df.drop(["ids", "date", "flag", "user"], axis=1)
+    df["text"] = df["text"].apply(preprocess_text)
     return df
 
 
