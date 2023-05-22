@@ -2,6 +2,7 @@ import pandas as pd
 
 from preprocess_data import preprocess_data
 from src.feature_extraction import feature_extraction
+from src.split_dataset import split_dataset
 
 if "__main__" == __name__:
     print("loading data...")
@@ -15,5 +16,6 @@ if "__main__" == __name__:
     print("creating feature matrix...")
     matrix = feature_extraction(df)
     print("feature matrix created")
-    print(df.head())
-    print(matrix)
+    print("splitting dataset...")
+    x_train, x_test, y_train, y_test = split_dataset(matrix, df["target"])
+    print("dataset splitted")
