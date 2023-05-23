@@ -1,8 +1,11 @@
+import time
+
 import pandas as pd
 
 from preprocess_data import preprocess_data
 from src.feature_extraction import feature_extraction
 from src.split_dataset import split_dataset
+from src.train_model import train_model
 
 if "__main__" == __name__:
     print("loading data...")
@@ -19,3 +22,8 @@ if "__main__" == __name__:
     print("splitting dataset...")
     x_train, x_test, y_train, y_test = split_dataset(matrix, df["target"])
     print("dataset splitted")
+    print("training model...")
+    start = time.time()
+    model = train_model(x_train, y_train)
+    end = time.time()
+    print("model trained. Time -> ", end - start)
